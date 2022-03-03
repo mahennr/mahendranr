@@ -1,10 +1,9 @@
 public class ExceptionThrown {
 public static void main(String args[]){
 
-try{
+try {
 int data=100/0;
-
-} 
+ } 
 
 catch(ArithmeticException e) 
 {System.out.println(e);}

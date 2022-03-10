@@ -1,0 +1,125 @@
+package com.java.generics;
+
+class MyClass<T> {
+	T obj;
+
+	// Initialization
+	MyClass(T obj) {
+		this.obj = obj;
+	}
+
+// returns T type object
+	T getobj() {
+		return obj;
+	}
+}
+
+public class Gen1 {
+
+	public static void main(String[] args) {
+
+		Integer i = 12;
+		MyClass<Integer> obj = new MyClass<>(i);
+		// retrieve Integer Obj
+		System.out.println("U stored: " + obj.getobj());
+
+		Float f = 12.123f;
+		MyClass<Float> obj1 = new MyClass<>(f);
+		System.out.println("U stored: " + obj1.getobj());
+
+		MyClass<String> obj2 = new MyClass<>("Mahendra Gowda");
+		System.out.println("U stored: " + obj2.getobj());
+
+	}
+
+}
+===========================================================================
+package com.java.generics;
+
+class GenericClass {
+	// This method accepts T type Array
+
+	static <T> void display(T[] arr) {
+		// for-each loop to read elements of the Array
+		for (T i : arr)
+			System.out.println(i);
+
+	}
+}
+
+public class GenMethod2 {
+
+	public static void main(String[] args) {
+		// read elements from Integer type array using display()
+
+		Integer arr1[] = { 1, 2, 3, 4, 5, 6 };
+		System.out.println("Reading  Integer objects: ");
+		GenericClass.display(arr1);
+
+		Double arr2[] = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.0 };
+		System.out.println("Reading  Double objects: ");
+		GenericClass.display(arr2);
+
+		String arr3[] = { "Raju", "Rani", "Ravi", "Mahi" };
+		System.out.println("Reading  String objects: ");
+		GenericClass.display(arr3);
+	}
+
+}
+===================================================
+/**
+ * 
+ */
+package com.java.generics;
+
+/**
+ * @author Mahen
+ *
+ */
+
+interface Fruit {
+	<T> void tellTaste(T fruit);
+}
+package com.java.generics;
+
+class AnyFruit<T> implements Fruit<T> {
+
+	public void tellTaste(T fruit) {
+
+		// Know the name of the Object
+		String fruitname = fruit.getClass().getName();
+
+		// then decide the taste and display
+		if (fruitname.equals("Banana")) {
+			System.out.println("Banana is Sweat");
+		}
+
+		else if (fruitname.equals("Orange")) {
+			System.out.println("Orange is Sour");
+		}
+
+	}
+}
+
+class Banana {
+
+}
+
+class Orange {
+
+}
+
+public class GenInterfaceDemo {
+
+	public static void main(String[] args) {
+		// Create banana Object and Pass it to AnyFruit class
+		Banana b = new Banana();
+		AnyFruit<Banana> fruit1 = new AnyFruit<>();
+		fruit1.tellTaste(b);
+		
+		// Create Orange Object and Pass it to AnyFruit class
+		Orange o = new Orange();
+		AnyFruit<Orange> fruit2 = new AnyFruit<>();
+		fruit2.tellTaste(o);
+	}
+}

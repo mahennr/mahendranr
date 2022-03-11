@@ -14,3 +14,28 @@ public class MethodOverloadingDemo {
 			}  
 }
 ====================================================================================================
+//Demo for Abstract class & method
+abstract class Bank{
+abstract int getRateOfInterest();
+}
+
+Bank extends SBI{
+int getRateOfInterest() {return 6;}
+} 
+
+
+Bank extends HDFC{
+int getRateOfInterest() {return 9}
+}
+
+class TestBank {
+public static void main(String[]args)
+
+Bank b;
+
+b = SBI();
+System.out.println("SBI Bank ROI:" +b.getRateOfInterest() + "/%" ) 
+
+b = SBI();
+System.out.println("HDFC Bank ROI:" +b.getRateOfInterest() + "/%" ) 
+}
